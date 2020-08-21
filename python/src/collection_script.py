@@ -88,10 +88,19 @@ class Collector:
 
     def write_to_json(self):
         json_string = json.dumps(self.player_data)
-        print(json_string)
+        filename = self.create_filename()
+        full_filename = r"..\..\data" + filename
+        print(full_filename)
+        with open(full_filename, "w") as file:
+            json.dump(self.player_data, file)
 
     def create_filename(self, file_extension=".json"):
-        return self.last_name.lower().capitalize() + self.first_name.lower().capitalize() + "," + self.start_date + self.end_date + file_extension
+        return "\\" + self.last_name.lower().capitalize() + "_" + self.first_name.lower().capitalize() + "_" + \
+               Collector.cleanup_date(self.start_date) + "_" + Collector.cleanup_date(self.end_date) + file_extension
+
+    @staticmethod
+    def cleanup_date(date):
+        return str(date).replace("/", "-")
 
 
 c = Collector()
