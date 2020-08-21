@@ -32,7 +32,6 @@ class Collector:
             if len(parsed_data) != 0:
                 self.add_to_list(date=str(panda_date), data=parsed_data)
         self.write_to_json()
-        return
 
     @staticmethod
     def format_date(panda_date):
@@ -90,6 +89,9 @@ class Collector:
     def write_to_json(self):
         json_string = json.dumps(self.player_data)
         print(json_string)
+
+    def create_filename(self, file_extension=".json"):
+        return self.last_name.lower().capitalize() + self.first_name.lower().capitalize() + "," + self.start_date + self.end_date + file_extension
 
 
 c = Collector()
