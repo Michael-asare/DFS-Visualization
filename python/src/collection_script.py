@@ -67,7 +67,8 @@ class Collector:
     @staticmethod
     def trim_name(name):
         if "^" in name:
-            return name[:len(name) - 1]
+            end = len(name) - 1
+            return name[:end]
         return name
 
     def format_name(self):
