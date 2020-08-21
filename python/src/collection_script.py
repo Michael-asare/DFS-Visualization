@@ -30,7 +30,8 @@ class Collector:
             day = date[2]
             parsed_data = self.parse(self.format_url(year=year, month=month, day=day))
             if len(parsed_data) != 0:
-                self.add_to_list(date=date, data=parsed_data)
+                self.add_to_list(date=str(panda_date), data=parsed_data)
+        self.write_to_json()
         return
 
     @staticmethod
@@ -85,6 +86,10 @@ class Collector:
             "points": data
         }
         self.player_data.append(data_pairing)
+
+    def write_to_json(self):
+        json_string = json.dumps(self.player_data)
+        print(json_string)
 
 
 c = Collector()
