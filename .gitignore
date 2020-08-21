@@ -3,5 +3,4 @@ java/java.iml
 python/.idea/
 python/venv/
 data/
-data/*
-!data.txt
+!data/data.txt
