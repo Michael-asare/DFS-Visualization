@@ -2,5 +2,5 @@ java/.idea/
 java/java.iml
 python/.idea/
 python/venv/
-!data/data.txt
-data/*
+!*/data/data.txt
+!*/data/*
