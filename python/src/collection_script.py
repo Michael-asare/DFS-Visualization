@@ -3,32 +3,21 @@ import pandas as pd
 import lxml
 import html5lib
 
-URL = "http://rotoguru1.com/cgi-bin/hyday.pl?game=fd&mon=8&day=13&year=2020"
-dfs = pd.read_html(URL)
-print(len(dfs[5][2]))
-
-
-# BASE_URL = "http://rotoguru1.com/cgi-bin/hyday.pl?mon=8&day=13&year=2020&game=fd"
-# dfs = pd.read_html(BASE_URL)
-# print(dfs[5][2])
-# print(dfs[5][1])
-# print(dfs[5][1][2] == "Lillard, Damian^")
-# first index = table of interest
-# second index = name (1), fanduel points (2), minutes (7)
-
-
 class Collector:
     # The url that will be edited to determine the date to be analyzed
     BASE_URL = "http://rotoguru1.com/cgi-bin/hyday.pl?mon=MONTH&day=DAY&year=YEAR&game=fd"
+    DATE_BASE = "mon=MONTH&day=DAY&year=YEAR"
+    # Table of Interest
+    TOI = 5
     NAME_ROW = 1
     FANDUEL_POINTS_ROW = 2
     MINUTES_ROW = 7
 
     def __init__(self):
-        self.first_name = sys.argv[0]
-        self.last_name = sys.argv[1]
-        self.start_date = sys.argv[2]
-        self.end_date = sys.argv[3]
+        self.first_name = sys.argv[1]
+        self.last_name = sys.argv[2]
+        self.start_date = sys.argv[3]
+        self.end_date = sys.argv[4]
 
     def collect(self):
         for panda_date in pd.date_range(start=self.start_date, end=self.end_date):
@@ -36,7 +25,7 @@ class Collector:
             year = date[0]
             month = date[1]
             day = date[2]
-            # parsed_data = self.parse(self.format_url(year, month, day))
+            parsed_data = self.parse(self.format_url(year=year, month=month, day=day))
         return
 
     @staticmethod
@@ -49,20 +38,28 @@ class Collector:
 
     @staticmethod
     def format_url(year, month, day):
-        url = Collector.BASE_URL
-        url = url.replace(year, "YEAR")
-        url = url.replace(month, "MONTH")
-        url = url.replace(day, "DAY")
-        return url
+        str_month = "mon=" + str(month)
+        str_day = "day=" + str(day)
+        str_year = "year=" + str(year)
+        query = str_month + "&" + str_day + "&" + str_year
+        return Collector.BASE_URL.replace(Collector.DATE_BASE, query)
 
     def parse(self, url):
-        dfs = pd.read_html(url)
-        if len(dfs) != 7:
-            return
-        for i in range(len(dfs[5][Collector.NAME_ROW])):
-            return
-        name = self.format_name()
-        return
+        try:
+            dfs = pd.read_html(url)
+            if len(dfs[Collector.TOI]) <= 1:
+                return ""
+            formatted_name = self.format_name()
+            for i in range(len(dfs[Collector.TOI][Collector.NAME_ROW])):
+                found_name = self.trim_name(dfs[Collector.TOI][Collector.NAME_ROW][i])
+                found_minutes = dfs[Collector.TOI][Collector.MINUTES_ROW][i]
+                if found_name == formatted_name:
+                    if found_minutes != "0" and found_minutes != "NA" and found_minutes != "DNP":
+                        found_fanduel_points = dfs[Collector.TOI][Collector.FANDUEL_POINTS_ROW][i]
+                        return found_fanduel_points
+            return ""
+        except ValueError:
+            return ""
 
     @staticmethod
     def trim_name(name):
@@ -81,5 +78,5 @@ class Collector:
         return
 
 
-# c = Collector
-# c.collect()
+c = Collector()
+c.collect()
