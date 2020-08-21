@@ -58,7 +58,7 @@ class Collector:
             for i in range(len(dfs[Collector.TOI][Collector.NAME_ROW])):
                 found_name = self.trim_name(dfs[Collector.TOI][Collector.NAME_ROW][i])
                 found_minutes = dfs[Collector.TOI][Collector.MINUTES_ROW][i]
-                if found_name.upper == formatted_name.upper:
+                if found_name.upper() == formatted_name:
                     if found_minutes != "0" and found_minutes != "NA" and found_minutes != "DNP":
                         found_fanduel_points = dfs[Collector.TOI][Collector.FANDUEL_POINTS_ROW][i]
                         return found_fanduel_points
@@ -75,7 +75,7 @@ class Collector:
 
     def format_name(self):
         name = self.last_name + ", " + self.first_name
-        return name
+        return name.upper()
 
     def add_to_list(self, date, data):
         data_pairing = {
