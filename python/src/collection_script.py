@@ -2,6 +2,8 @@ import sys
 import pandas as pd
 import lxml
 import html5lib
+import json
+
 
 class Collector:
     # The url that will be edited to determine the date to be analyzed
@@ -18,6 +20,7 @@ class Collector:
         self.last_name = sys.argv[2]
         self.start_date = sys.argv[3]
         self.end_date = sys.argv[4]
+        self.player_data = []
 
     def collect(self):
         for panda_date in pd.date_range(start=self.start_date, end=self.end_date):
@@ -26,6 +29,8 @@ class Collector:
             month = date[1]
             day = date[2]
             parsed_data = self.parse(self.format_url(year=year, month=month, day=day))
+            if len(parsed_data) != 0:
+                self.add_to_list(date=date, data=parsed_data)
         return
 
     @staticmethod
@@ -74,8 +79,12 @@ class Collector:
         name = last_name + ", " + first_name
         return name
 
-    def write_to_csv(self):
-        return
+    def add_to_list(self, date, data):
+        data_pairing = {
+            "date": date,
+            "points": data
+        }
+        self.player_data.append(data_pairing)
 
 
 c = Collector()
