@@ -18,7 +18,7 @@
                               <Font name="Arial" size="12.0" />
                            </font>
                         </TextArea>
-                        <Button layoutX="62.0" layoutY="334.0" mnemonicParsing="false" text="Visualize" />
+                        <Button fx:id="visualize" layoutX="62.0" layoutY="334.0" mnemonicParsing="false" text="Visualize" />
                      </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
@@ -26,8 +26,8 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="197.0" prefWidth="313.0">
                                  <children>
-                                    <TextField layoutX="35.0" layoutY="42.0" promptText="First Name" />
-                                    <TextField layoutX="209.0" layoutY="42.0" promptText="Last Name" />
+                                    <TextField fx:id="firstName" layoutX="35.0" layoutY="42.0" promptText="First Name" />
+                                    <TextField fx:id="lastName" layoutX="209.0" layoutY="42.0" promptText="Last Name" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -37,8 +37,8 @@
                                           <Image url="@calendar.jpg" />
                                        </image>
                                     </ImageView>
-                                    <DatePicker layoutX="230.0" layoutY="54.0" promptText="Start Date" />
-                                    <DatePicker layoutX="230.0" layoutY="177.0" promptText="End Date" />
+                                    <DatePicker fx:id="startDate" layoutX="230.0" layoutY="54.0" promptText="Start Date" />
+                                    <DatePicker fx:id="endDate" layoutX="230.0" layoutY="177.0" promptText="End Date" />
                                  </children>
                               </AnchorPane>
                           </items>
