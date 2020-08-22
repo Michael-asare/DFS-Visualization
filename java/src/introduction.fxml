@@ -1,50 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TitledPane fx:id="Prompt" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" text="Visual Player Data!" textAlignment="CENTER" />
-      <SplitPane dividerPositions="0.5" layoutX="171.0" layoutY="72.0" orientation="VERTICAL" prefHeight="255.0" prefWidth="257.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="128.0" prefWidth="202.0">
-               <children>
-                  <SplitPane dividerPositions="0.5" prefHeight="124.0" prefWidth="255.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                           <children>
-                              <TextField fx:id="firstName" layoutY="48.0" prefHeight="22.0" prefWidth="124.0" promptText="First Name" />
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                           <children>
-                              <TextField fx:id="lastName" layoutY="48.0" prefHeight="22.0" prefWidth="124.0" promptText="Last Name" />
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="124.0" prefWidth="255.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="165.0">
-                           <children>
-                              <DatePicker fx:id="startDate" layoutX="65.0" layoutY="14.0" promptText="Start Date" />
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                           <children>
-                              <DatePicker fx:id="endDate" layoutX="65.0" layoutY="16.0" promptText="End Date" />
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
+      <TitledPane fx:id="Prompt" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" text="Visual Player Data!" textAlignment="CENTER">
+         <content>
+            <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <SplitPane dividerPositions="0.3" layoutX="-2.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="375.0" prefWidth="420.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="197.0" prefWidth="313.0">
+                                 <children>
+                                    <TextField layoutX="35.0" layoutY="42.0" promptText="First Name" />
+                                    <TextField layoutX="209.0" layoutY="42.0" promptText="Last Name" />
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@calendar.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <DatePicker layoutX="230.0" layoutY="54.0" promptText="Start Date" />
+                                    <DatePicker layoutX="230.0" layoutY="177.0" promptText="End Date" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </content></TitledPane>
    </children>
 </AnchorPane>
