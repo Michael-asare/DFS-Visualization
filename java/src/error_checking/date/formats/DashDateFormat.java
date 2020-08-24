@@ -9,6 +9,8 @@ public class DashDateFormat extends DateFormat {
 
     @Override
     public boolean check() {
+        String [] ls = input.split("-");
+
         return false;
     }
 }

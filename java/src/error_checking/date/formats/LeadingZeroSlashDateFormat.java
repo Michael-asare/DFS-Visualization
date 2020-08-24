@@ -15,7 +15,7 @@ public class LeadingZeroSlashDateFormat extends DateFormat {
         if(!pattern.matcher(input).matches()) {
             return false;
         }
-        String [] ls = input.split("/\\//");
+        String [] ls = input.split("/");
         day = Integer.parseInt(ls[0], 10);
         month = Integer.parseInt(ls[1], 10);
         year = Integer.parseInt(ls[2], 10);
