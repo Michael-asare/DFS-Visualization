@@ -14,7 +14,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/introduction.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/introduction.fxml"));
+        Parent root = loader.load();
+        IntroductionController introductionController = loader.getController();
         primaryStage.setTitle("DFS Visualization");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
