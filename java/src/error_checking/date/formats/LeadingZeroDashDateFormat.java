@@ -19,8 +19,6 @@ public class LeadingZeroDashDateFormat extends DateFormat {
         day = Integer.parseInt(ls[0], 10);
         month = Integer.parseInt(ls[1], 10);
         year = Integer.parseInt(ls[2], 10);
-        if(validDay() && validMonth() && validYear())
-            return true;
-        return false;
+        return validDay() && validMonth() && validYear();
     }
 }
