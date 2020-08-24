@@ -16,11 +16,12 @@ public class LeadingZeroSlashDateFormat extends DateFormat {
             return false;
         }
         String [] ls = input.split("/\\//");
-        day = Integer.parseInt(ls[0]);
-        month = Integer.parseInt(ls[1]);
-        year = Integer.parseInt(ls[2]);
+        day = Integer.parseInt(ls[0], 10);
+        month = Integer.parseInt(ls[1], 10);
+        year = Integer.parseInt(ls[2], 10);
         if(validDay() && validMonth() && validYear())
             return true;
         return false;
     }
+
 }
