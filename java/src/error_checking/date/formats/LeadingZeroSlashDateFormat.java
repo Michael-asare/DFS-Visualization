@@ -11,7 +11,7 @@ public class LeadingZeroSlashDateFormat extends DateFormat {
 
     @Override
     public boolean check() {
-        Pattern pattern = Pattern.compile("\\d{2}/\\//\\d{2}/\\//\\d{4}");
+        Pattern pattern = Pattern.compile("\\d{2}/\\d{2}/\\d{4}");
         if(!pattern.matcher(input).matches()) {
             return false;
         }
