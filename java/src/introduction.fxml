@@ -7,7 +7,7 @@
 
 <AnchorPane fx:controller="IntroductionController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TitledPane fx:id="Prompt" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" text="Visual Player Data!" textAlignment="CENTER">
+      <TitledPane fx:id="prompt" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" text="Visual Player Data!" textAlignment="CENTER">
          <content>
             <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0">
               <items>
