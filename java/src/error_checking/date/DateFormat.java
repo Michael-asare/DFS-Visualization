@@ -4,7 +4,7 @@ import error_checking.Format;
 
 public abstract class DateFormat implements Format {
     protected String input;
-    protected int day;
-    protected int month;
-    protected int year;
+    protected int day = -1;
+    protected int month = -1;
+    protected int year = -1;
 }
