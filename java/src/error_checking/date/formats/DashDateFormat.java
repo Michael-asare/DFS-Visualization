@@ -10,7 +10,9 @@ public class DashDateFormat extends DateFormat {
     @Override
     public boolean check() {
         String [] ls = input.split("-");
-
-        return false;
+        day = Integer.parseInt(ls[0]);
+        month = Integer.parseInt(ls[1]);
+        year = Integer.parseInt(ls[2]);
+        return validDay() && validMonth() && validYear();
     }
 }

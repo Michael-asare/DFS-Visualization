@@ -11,6 +11,10 @@ public class SlashDateFormat extends DateFormat {
 
     @Override
     public boolean check() {
-        return false;
+        String [] ls = input.split("/");
+        day = Integer.parseInt(ls[0]);
+        month = Integer.parseInt(ls[1]);
+        year = Integer.parseInt(ls[2]);
+        return validDay() && validMonth() && validYear();
     }
 }
