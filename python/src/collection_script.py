@@ -148,7 +148,8 @@ class Collector:
         """
         json_string = json.dumps(self.player_data)
         filename = self.create_filename()
-        full_filename = r"..\..\data" + filename
+        # Was originally r"..\..\data before java programming
+        full_filename = r"..\data" + filename
         with open(full_filename, "w") as file:
             json.dump(self.player_data, file)
 
