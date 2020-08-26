@@ -10,5 +10,6 @@
          <content>
             <ImageView fx:id="displayImage" fitHeight="286.0" fitWidth="431.0" pickOnBounds="true" preserveRatio="true" />
          </content></TitledPane>
+      <Button fx:id="quitButton" layoutX="550.0" mnemonicParsing="false" onAction="#handleQuitButtonPress" text="QUIT?" />
    </children>
 </AnchorPane>
