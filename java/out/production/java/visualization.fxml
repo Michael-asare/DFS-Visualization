@@ -4,11 +4,12 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VisualizationController">
    <children>
       <TitledPane fx:id="mainHeader" prefHeight="400.0" prefWidth="600.0">
          <content>
             <ImageView fx:id="displayImage" fitHeight="286.0" fitWidth="431.0" pickOnBounds="true" preserveRatio="true" />
          </content></TitledPane>
+      <Button fx:id="quitButton" layoutX="550.0" mnemonicParsing="false" onAction="#handleQuitButtonPress" text="QUIT?" />
    </children>
 </AnchorPane>
