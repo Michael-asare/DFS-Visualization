@@ -3,6 +3,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class IntroductionController {
     @FXML
@@ -34,6 +35,7 @@ public class IntroductionController {
         if(response.isEmpty()) {
             Visualizer visualizer = new Visualizer(firstName.getText(), lastName.getText(),
                     startDate.getValue().toString(), endDate.getValue().toString());
+            visualizer.createData("points", "date");
         }
     }
 
