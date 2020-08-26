@@ -1,8 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 public class Visualizer {
     private String firstName;
@@ -30,11 +26,17 @@ public class Visualizer {
         return month + "/" + day + "/" + year;
     }
 
-    public void createData(String yAxis, String xAxis) {
-        this.yAxis = yAxis;
-        this.xAxis = xAxis;
+    public String jsonFileDate(String date) {
+        String [] ls = date.split("-");
+        int year = Integer.parseInt(ls[0], 10);
+        int month = Integer.parseInt(ls[1], 10);
+        int day = Integer.parseInt(ls[2], 10);
+
+        return month + "-" + day + "-" + year;
+    }
+
+    public void createData() {
         runCollectionScript();
-        convertJSONtoCSV();
     }
 
     private void runCollectionScript() {
@@ -44,17 +46,18 @@ public class Visualizer {
                 paramDate(startDate), paramDate(endDate));
         try {
             Process process = processBuilder.start();
-        } catch (IOException e) {
+            process.waitFor();
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-
+        dataFilename = "../data/" + lastName + "_" + firstName + "_" +
+                jsonFileDate(startDate) + "_" + jsonFileDate(endDate) + ".json";
     }
 
-    private void convertJSONtoCSV() {
-
-    }
-
-    public String createGraphImage() {
+    public String createGraphImage(String yAxis, String xAxis) {
+        this.yAxis = yAxis;
+        this.xAxis = xAxis;
+        runVisualizationScript();
         return "";
     }
 

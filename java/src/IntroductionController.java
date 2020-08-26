@@ -40,8 +40,8 @@ public class IntroductionController {
         if(response.isEmpty()) {
             Visualizer visualizer = new Visualizer(firstName.getText(), lastName.getText(),
                     startDate.getValue().toString(), endDate.getValue().toString());
-            visualizer.createData("points", "date");
-            String imageFilename = visualizer.createGraphImage();
+            visualizer.createData();
+            String imageFilename = visualizer.createGraphImage("points", "date");
             Stage primaryStage = (Stage) prompt.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/visualization.fxml"));
             Parent visualizationRoot = loader.load();
