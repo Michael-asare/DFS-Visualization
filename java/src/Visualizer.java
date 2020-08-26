@@ -63,7 +63,9 @@ public class Visualizer {
 
     private void runVisualizationScript() {
         String relativePath = "../python/src/visualization_script.py";
-        ProcessBuilder processBuilder = new ProcessBuilder("python", relativePath, dataFilename, yAxis, xAxis);
+        String name = firstName + " " + lastName;
+        ProcessBuilder processBuilder = new ProcessBuilder("python", relativePath,
+                dataFilename, yAxis, xAxis, name);
         try {
             Process process = processBuilder.start();
             process.waitFor();
