@@ -26,6 +26,7 @@ class Plotter:
         plt.xlabel(self.x_axis)
         plt.ylabel(self.y_axis)
         plt.title(self.name)
+        plt.savefig(self.data_filename[:len(self.data_filename) - 5] + "_" + self.y_axis + "vs" + self.x_axis + ".jpg")
         plt.show()
 
     def parse_json(self):
