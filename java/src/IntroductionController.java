@@ -28,6 +28,7 @@ public class IntroductionController {
 
     @FXML
     public void handleVisualizePress(ActionEvent actionEvent) {
+        InputChecker inputChecker = new InputChecker(firstName, lastName, startDate, endDate);
     }
 
 }
