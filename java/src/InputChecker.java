@@ -30,6 +30,9 @@ public class InputChecker {
         if(!isValidEndDate()) {
             response += endDateErrorMessage();
         }
+        if(!isSeqDate()) {
+            response += seqDateErrorMessage();
+        }
         return response;
     }
 
@@ -63,6 +66,14 @@ public class InputChecker {
         }
     }
 
+    private boolean isSeqDate() {
+        try {
+            return startDate.getValue().isBefore(endDate.getValue());
+        } catch (Exception exception) {
+            return false;
+        }
+    }
+
     private String firstNameErrorMessage() {
         return "Make sure to enter in a first name. \n" +
                 "Also insure that the first name entered does not include any spaces. ";
@@ -86,5 +97,9 @@ public class InputChecker {
                 "The ending date should be in some form of a MM/DD/YYYY format, \n" +
                 "with MANDATORY selection from the calendar option. \n" +
                 "The program only recognizes the most recently calendar picked date ";
+    }
+
+    private String seqDateErrorMessage() {
+        return " Make sure to put two valid ordered dates. ";
     }
 }
