@@ -31,6 +31,10 @@ public class IntroductionController {
         InputChecker inputChecker = new InputChecker(firstName, lastName, startDate, endDate);
         String response = inputChecker.checkInput();
         errorArea.setText(response);
+        if(response.isEmpty()) {
+            Visualizer visualizer = new Visualizer(firstName.getText(), lastName.getText(),
+                    startDate.getValue().toString(), endDate.getValue().toString());
+        }
     }
 
 }
