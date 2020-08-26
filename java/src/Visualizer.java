@@ -33,7 +33,7 @@ public class Visualizer {
     }
 
     public String createGraphImage() {
-        return null;
+        return "";
     }
 
     private void runVisualizationScript() {
