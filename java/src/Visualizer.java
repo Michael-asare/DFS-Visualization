@@ -7,6 +7,8 @@ public class Visualizer {
     private String endDate;
     private String yAxis;
     private String xAxis;
+    private String dataFilename;
+    private String graphFilename;
 
     public Visualizer(String firstName, String lastName, String startDate, String endDate) {
         this.firstName = firstName;
@@ -27,6 +29,14 @@ public class Visualizer {
     }
 
     private void convertJSONtoCSV() {
+
+    }
+
+    public String createGraphImage() {
+        return null;
+    }
+
+    private void runVisualizationScript() {
 
     }
 }

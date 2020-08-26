@@ -36,6 +36,7 @@ public class IntroductionController {
             Visualizer visualizer = new Visualizer(firstName.getText(), lastName.getText(),
                     startDate.getValue().toString(), endDate.getValue().toString());
             visualizer.createData("points", "date");
+            String imageFilename = visualizer.createGraphImage();
         }
     }
 
