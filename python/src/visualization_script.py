@@ -4,6 +4,7 @@ import datetime as dt
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
+
 class Plotter:
     def __init__(self):
         self.data_filename = sys.argv[1]
@@ -20,7 +21,7 @@ class Plotter:
         else:
             plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%m/%d/%Y'))
             plt.gca().xaxis.set_major_locator(mdates.DayLocator())
-            plt.plot(self.x, self.y)
+            plt.plot(self.x, self.y, '-.dm')
             plt.gcf().autofmt_xdate()
         plt.xlabel(self.x_axis)
         plt.ylabel(self.y_axis)
