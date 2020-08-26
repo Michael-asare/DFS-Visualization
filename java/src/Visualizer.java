@@ -58,10 +58,19 @@ public class Visualizer {
         this.yAxis = yAxis;
         this.xAxis = xAxis;
         runVisualizationScript();
-        return "";
+        return graphFilename;
     }
 
     private void runVisualizationScript() {
-
+        String relativePath = "../python/src/visualization_script.py";
+        ProcessBuilder processBuilder = new ProcessBuilder("python", relativePath, dataFilename, yAxis, xAxis);
+        try {
+            Process process = processBuilder.start();
+            process.waitFor();
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        graphFilename = dataFilename.substring(0, dataFilename.length() - 5)
+                + "_" + yAxis + "vs" + xAxis + ".jpg";
     }
 }
