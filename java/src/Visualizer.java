@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Visualizer {
@@ -17,6 +21,15 @@ public class Visualizer {
         this.endDate = endDate;
     }
 
+    public String paramDate(String date) {
+        String [] ls = date.split("-");
+        int year = Integer.parseInt(ls[0], 10);
+        int month = Integer.parseInt(ls[1], 10);
+        int day = Integer.parseInt(ls[2], 10);
+
+        return month + "/" + day + "/" + year;
+    }
+
     public void createData(String yAxis, String xAxis) {
         this.yAxis = yAxis;
         this.xAxis = xAxis;
@@ -25,6 +38,15 @@ public class Visualizer {
     }
 
     private void runCollectionScript() {
+        String relativePath = "../python/src/collection_script.py";
+        ProcessBuilder processBuilder = new ProcessBuilder("python",
+                relativePath, firstName, lastName,
+                paramDate(startDate), paramDate(endDate));
+        try {
+            Process process = processBuilder.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
