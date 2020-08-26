@@ -1,9 +1,6 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 
 import java.time.LocalDate;
 
@@ -27,8 +24,13 @@ public class IntroductionController {
     public DatePicker endDate;
 
     @FXML
+    public TextArea errorArea;
+
+    @FXML
     public void handleVisualizePress(ActionEvent actionEvent) {
         InputChecker inputChecker = new InputChecker(firstName, lastName, startDate, endDate);
+        String response = inputChecker.checkInput();
+        errorArea.setText(response);
     }
 
 }

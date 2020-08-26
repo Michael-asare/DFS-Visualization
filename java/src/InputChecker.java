@@ -33,17 +33,17 @@ public class InputChecker {
         return response;
     }
 
-    public boolean isValidFirstName() {
+    private boolean isValidFirstName() {
         String text = firstName.getText();
         return text.length() != 0 && !text.contains(" ");
     }
 
-    public boolean isValidLastName() {
+    private boolean isValidLastName() {
         String text = lastName.getText();
         return text.length() != 0;
     }
 
-    public boolean isValidStartDate() {
+    private boolean isValidStartDate() {
         try {
             LocalDate localDate = startDate.getValue();
             String text = localDate.toString();
@@ -53,7 +53,7 @@ public class InputChecker {
         }
     }
 
-    public boolean isValidEndDate() {
+    private boolean isValidEndDate() {
         try {
             LocalDate localDate = endDate.getValue();
             String text = localDate.toString();
@@ -63,26 +63,28 @@ public class InputChecker {
         }
     }
 
-    public String firstNameErrorMessage() {
+    private String firstNameErrorMessage() {
         return "Make sure to enter in a first name. \n" +
                 "Also insure that the first name entered does not include any spaces. ";
     }
 
-    public String lastNameErrorMessage() {
+    private String lastNameErrorMessage() {
         return "Make sure to enter in a last name. \n" +
                 "Also insure that the last name entered has no trailing spaces. \n" +
                 "If there are any Jrs, III, etc., add that at the end of the last name. ";
     }
 
-    public String startDateErrorMessage() {
+    private String startDateErrorMessage() {
         return "Make sure to enter a starting date. \n" +
                 "The starting date should be in some form of a MM/DD/YYYY format, \n" +
-                "if not selected from the calendar option. ";
+                "with MANDATORY selection from the calendar option. \n" +
+                "The program only recognizes the most recently calendar picked date ";
     }
 
-    public String endDateErrorMessage() {
+    private String endDateErrorMessage() {
         return "Make sure to enter an ending date. \n" +
                 "The ending date should be in some form of a MM/DD/YYYY format, \n" +
-                "if not selected from the calendar option. ";
+                "with MANDATORY selection from the calendar option. \n" +
+                "The program only recognizes the most recently calendar picked date ";
     }
 }
