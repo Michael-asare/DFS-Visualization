@@ -5,6 +5,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 
+import java.time.LocalDate;
+
 public class IntroductionController {
     @FXML
     public TitledPane prompt;
@@ -27,4 +29,5 @@ public class IntroductionController {
     @FXML
     public void handleVisualizePress(ActionEvent actionEvent) {
     }
+
 }
