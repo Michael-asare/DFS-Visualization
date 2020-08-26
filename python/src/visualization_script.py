@@ -9,6 +9,7 @@ class Plotter:
         self.data_filename = sys.argv[1]
         self.y_axis = sys.argv[2]
         self.x_axis = sys.argv[3]
+        self.name = sys.argv[4]
         self.y = []
         self.x = []
 
@@ -19,10 +20,11 @@ class Plotter:
         else:
             plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%m/%d/%Y'))
             plt.gca().xaxis.set_major_locator(mdates.DayLocator())
-            print(len(self.x))
-            print(len(self.y))
             plt.plot(self.x, self.y)
             plt.gcf().autofmt_xdate()
+        plt.xlabel(self.x_axis)
+        plt.ylabel(self.y_axis)
+        plt.title(self.name)
         plt.show()
 
     def parse_json(self):
