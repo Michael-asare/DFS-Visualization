@@ -1,0 +1,1 @@
+python visualization_script.py %*
