@@ -22,6 +22,11 @@ public class VisualizationController {
         this.filename = filename;
     }
 
+    /**
+     * Handles what happens when the user presses the quit button on the GUI
+     * @param actionEvent represents the action of pressing the quit button
+     * @throws IOException
+     */
     @FXML
     public void handleQuitButtonPress(ActionEvent actionEvent) throws IOException {
         Stage primaryStage = (Stage) quitButton.getScene().getWindow();
