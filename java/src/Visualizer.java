@@ -20,6 +20,11 @@ public class Visualizer {
         this.endDate = endDate;
     }
 
+    /**
+     * Creates a date that will be used as a command line argument
+     * @param date a date
+     * @return a String date that is in the MM/DD/YYYY format
+     */
     public String paramDate(String date) {
         String [] ls = date.split("-");
         int year = Integer.parseInt(ls[0], 10);
@@ -29,6 +34,11 @@ public class Visualizer {
         return month + "/" + day + "/" + year;
     }
 
+    /**
+     * Creates a date that will be used for the json creation command line argument
+     * @param date a date
+     * @return a String date that is in MM-DD-YYYY
+     */
     public String jsonFileDate(String date) {
         String [] ls = date.split("-");
         int year = Integer.parseInt(ls[0], 10);
@@ -42,6 +52,9 @@ public class Visualizer {
         runCollectionScript();
     }
 
+    /**
+     * Runs the collection_script.py file
+     */
     private void runCollectionScript() {
         String relativePath = "../python/src/collection_script.py";
         dataFilename = "../data/" + lastName + "_" + firstName + "_" +
@@ -53,15 +66,17 @@ public class Visualizer {
 
         try {
             Process process = processBuilder.start();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            String read;
-            while((read = bufferedReader.readLine()) != null)
-                System.out.println(read);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Creates the visualization based off the axes given
+     * @param yAxis the first argument
+     * @param xAxis the second argument
+     * @return the filename of the graph to be displayed
+     */
     public String createGraphImage(String yAxis, String xAxis) {
         this.yAxis = yAxis;
         this.xAxis = xAxis;
@@ -69,6 +84,9 @@ public class Visualizer {
         return graphFilename;
     }
 
+    /**
+     * Runs the visualization_script.py
+     */
     private void runVisualizationScript() {
         String relativePath = "../python/src/visualization_script.py";
         String name = firstName + " " + lastName;
