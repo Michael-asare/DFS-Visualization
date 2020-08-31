@@ -32,11 +32,27 @@ public class IntroductionController {
     @FXML
     public TextArea errorArea;
 
+    /**
+     * Handles the logic for when the user clicks the visualize control
+     * @param actionEvent The action of pressing visualize
+     * @throws IOException
+     */
     @FXML
     public void handleVisualizePress(ActionEvent actionEvent) throws IOException {
+        /*
+        Check the input given from the GUI
+        Place error message in error box if an error is given
+         */
         InputChecker inputChecker = new InputChecker(firstName, lastName, startDate, endDate);
         String response = inputChecker.checkInput();
         errorArea.setText(response);
+
+        /*
+        If there is no error
+        Create the data for visualization
+        Create the graph for visualization
+        Load & Swap the stage over to the visualization pane
+         */
         if(response.isEmpty()) {
             Visualizer visualizer = new Visualizer(firstName.getText(), lastName.getText(),
                     startDate.getValue().toString(), endDate.getValue().toString());
