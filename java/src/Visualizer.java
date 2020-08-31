@@ -1,4 +1,7 @@
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Visualizer {
     private String firstName;
@@ -41,17 +44,22 @@ public class Visualizer {
 
     private void runCollectionScript() {
         String relativePath = "../python/src/collection_script.py";
+        dataFilename = "../data/" + lastName + "_" + firstName + "_" +
+                jsonFileDate(startDate) + "_" + jsonFileDate(endDate) + ".json";
+        String name = firstName +  " " + lastName;
         ProcessBuilder processBuilder = new ProcessBuilder("python",
                 relativePath, firstName, lastName,
                 paramDate(startDate), paramDate(endDate));
+
         try {
             Process process = processBuilder.start();
-            process.waitFor();
-        } catch (IOException | InterruptedException e) {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            String read;
+            while((read = bufferedReader.readLine()) != null)
+                System.out.println(read);
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        dataFilename = "../data/" + lastName + "_" + firstName + "_" +
-                jsonFileDate(startDate) + "_" + jsonFileDate(endDate) + ".json";
     }
 
     public String createGraphImage(String yAxis, String xAxis) {
@@ -64,6 +72,8 @@ public class Visualizer {
     private void runVisualizationScript() {
         String relativePath = "../python/src/visualization_script.py";
         String name = firstName + " " + lastName;
+
+
         ProcessBuilder processBuilder = new ProcessBuilder("python", relativePath,
                 dataFilename, yAxis, xAxis, name);
         try {
