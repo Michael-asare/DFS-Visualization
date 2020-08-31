@@ -26,7 +26,8 @@ class Collector:
         self.player_data = []
 
     def collect(self):
-        """Collects data for a range of dates for a player and then writes it to a json file
+        """
+        Collects data for a range of dates for a player and then writes it to a json file
 
         :return:
         """
@@ -48,7 +49,8 @@ class Collector:
 
     @staticmethod
     def format_date(panda_date):
-        """Formats the pandas api date to a easily indexed list
+        """
+        Formats the pandas api date to a easily indexed list
 
         :param panda_date: Timestamp
         :return: list with date information
@@ -61,7 +63,8 @@ class Collector:
 
     @staticmethod
     def format_url(year, month, day):
-        """Creates a url based off of date data
+        """
+        Creates a url based off of date data
 
         :param year: an int that represents the year
         :param month: an int that represents the month (1-12)
@@ -75,7 +78,8 @@ class Collector:
         return Collector.BASE_URL.replace(Collector.DATE_BASE, query)
 
     def parse(self, url):
-        """ Given a url, returns fanduel points for the person, if valid. If not valid, returns an empty string.
+        """
+        Given a url, returns fanduel points for the person, if valid. If not valid, returns an empty string.
 
         :param url: a string that represents a url
         :return: the amount of fanduel points found for a player at the url. if not valid (NA/DNP/0 minutes) returns
@@ -110,7 +114,8 @@ class Collector:
 
     @staticmethod
     def trim_name(name):
-        """ Given a name (dfs site name), remove the carat if found
+        """
+         Given a name (dfs site name), remove the carat if found
 
         :param name: name of a player, given in the dfs site format
         :return: trimmed dfs formatted name
@@ -121,7 +126,8 @@ class Collector:
         return name
 
     def format_name(self):
-        """ Puts name into comparable format
+        """
+        Puts name into comparable format
 
         :return: comparable name (upper case & dfs style)
         """
@@ -129,7 +135,8 @@ class Collector:
         return name.upper()
 
     def add_to_list(self, date, data):
-        """ Adds player data for a certain date to a list of dicts
+        """
+        Adds player data for a certain date to a list of dicts
 
         :param date: full format date
         :param data: fanduel points for a player
@@ -142,7 +149,8 @@ class Collector:
         self.player_data.append(data_pairing)
 
     def write_to_json(self):
-        """ Writes a player's data to a json file
+        """
+        Writes a player's data to a json file
 
         :return:
         """
@@ -154,7 +162,8 @@ class Collector:
             json.dump(self.player_data, file)
 
     def create_filename(self, file_extension=".json"):
-        """ Sets up the filename to be used for writing
+        """
+        Sets up the filename to be used for writing
 
         :param file_extension: defaults to json, optionally can be another file extenstion
         :return:
@@ -164,7 +173,8 @@ class Collector:
 
     @staticmethod
     def cleanup_date(date):
-        """ Turns a date into a format for filenaming
+        """
+        Turns a date into a format for filenaming
 
         :param date: Attribute date
         :return: Attribute date with dashes for slashes
